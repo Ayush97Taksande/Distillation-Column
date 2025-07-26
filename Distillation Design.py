@@ -118,10 +118,8 @@ class BinaryDistillationDesign:
         self.results['Theoretical Stages'] = self.N_theoretical
     
     def calculate_tray_efficiency(self) -> None:
-        """Calculate O'Connell correlation for tray efficiency."""
-        mu = 0.35  # mPa·s (average liquid viscosity)
-        alpha = self.calculate_relative_volatility()
-        self.tray_efficiency = 0.492 * (alpha * mu)**(-0.245)
+        """Set actual trays based on constant tray efficiency."""
+        # Using constant efficiency provided during initialization
         self.N_actual = int(np.ceil(self.N_theoretical / self.tray_efficiency))
         self.results['Tray Efficiency'] = self.tray_efficiency
         self.results['Actual Trays'] = self.N_actual
